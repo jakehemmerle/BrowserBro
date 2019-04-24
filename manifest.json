@@ -1,0 +1,6 @@
+{
+  "name": "DataPal",
+  "version": "0.1",
+  "description": "Store your browsing data on an encrypted, decentralised drive.",
+  "manifest_version": 2
+}
