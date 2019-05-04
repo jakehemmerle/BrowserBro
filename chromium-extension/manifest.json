@@ -2,12 +2,14 @@
   "name": "BrowserBro",
   "version": "0.1",
   "description": "Store your browsing data on an encrypted, decentralised drive.",
-  "permissions": [
-    "history"
-  ],
+  "permissions": ["history", "storage"],
   "background": {
     "scripts": ["background.js"],
     "persistent": true
   },
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+
   "manifest_version": 2
 }
