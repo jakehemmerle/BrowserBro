@@ -1,0 +1,30 @@
+{
+  "name": "browserbro-server",
+  "version": "1.0.0",
+  "description": "browser extension",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakehemmerle/BrowserBro.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jakehemmerle/BrowserBro/issues"
+  },
+  "homepage": "https://github.com/jakehemmerle/BrowserBro#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "prettier": "^1.17.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.16.4",
+    "ipfs": "^0.35.0"
+  }
+}
