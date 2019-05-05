@@ -45,8 +45,14 @@ app.post('/uploadFile', async (req, res) => {
 });
 
 app.post('/uploadConfig', async (req, res) => {
-  const { config } = req.body;
+  try {
+    const { config } = req.body;
+  } catch (e) {
+    console.warn('No config key in body.')
+  }
+
   const privateKey = getPrivateKey(config);
+  IPFSNode.key.import()
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
