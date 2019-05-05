@@ -19,7 +19,7 @@ app.get('/ping', (req, res) => res.send('Hello World!'))
 app.post('/uploadFile', async (req, res) => {
   if (nodeRunning) {
     try {
-      let uploadData = req.body.upload
+      let uploadData = 'asdfdfdfsasd'
 
       const filesAdded = await IPFSNode.add({
         path: 'hello.txt',
