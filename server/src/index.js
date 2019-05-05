@@ -1,35 +1,30 @@
 const IPFS = require('ipfs');
-
-const node = new IPFS();
-
-node.on('ready', async () => {
-  nodeRunning = true;
-  console.log('IPFS Node Running')
-});
-
-let nodeRunning = false;
-
 const express = require('express');
 const app = express();
 const port = 3000;
 const bodyParser = require("body-parser");
+const { startNode } = require('./util');
+
+const IPFSNode = new IPFS();
+let nodeRunning = startNode(IPFSNode);
+
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/ping', (req, res) => res.send('Hello World!'));
 
 app.post('/uploadFile', async (req, res) => {
   if (nodeRunning) {
     try {
       let uploadData = req.body.upload;
 
-      const filesAdded = await node.add({
+      const filesAdded = await IPFSNode.add({
         path: 'hello.txt',
         content: Buffer.from(uploadData)
       });
 
       console.log('Added file:', filesAdded[0].path, filesAdded[0].hash);
 
-      const fileBuffer = await node.cat(filesAdded[0].hash);
+      const fileBuffer = await IPFSNode.cat(filesAdded[0].hash);
 
       console.log('Added file contents:', fileBuffer.toString());
 
@@ -37,7 +32,6 @@ app.post('/uploadFile', async (req, res) => {
       //     path: 'hello.txt',
       //     content: Buffer.from(uploadData)
       //   })
-
       //   //   let uploadBuffer = bufferFromString(uploadData)
       //   //   let upload = await node.addListener(uploadBuffer)
       //   console.log(upload)
@@ -48,6 +42,11 @@ app.post('/uploadFile', async (req, res) => {
   } else {
     res.send({ error: 'bad' })
   }
+});
+
+app.post('/uploadConfig', async (req, res) => {
+  const { config } = req.body;
+  const privateKey = getPrivateKey(config);
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
