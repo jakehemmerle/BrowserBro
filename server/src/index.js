@@ -14,7 +14,7 @@ let nodeRunning = startNode(IPFSNode)
 app.use(bodyParser.json()) // to support JSON-encoded bodies
 
 // ENDPOINTS
-app.get('/ping', (req, res) => res.send('Hello World!'))
+app.get('/ping', (req, res) => res.send({ message: 'pong' }))
 
 app.post('/uploadFile', async (req, res) => {
   if (nodeRunning) {
@@ -68,11 +68,4 @@ app.post('/syncBrowsingData', (req, res) => {
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
-function bufferFromString (str) {
-  const strUtf8 = unescape(encodeURIComponent(str))
-  const ab = new Uint8Array(strUtf8.length)
-  for (let i = 0; i < strUtf8.length; i++) {
-    ab[i] = strUtf8.charCodeAt(i)
-  }
-  return ab
-}
+

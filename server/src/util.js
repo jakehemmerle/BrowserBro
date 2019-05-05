@@ -21,8 +21,18 @@ const getTestConfigFile = () => {
   return fs.readFileSync('resources/jsipfs/config', 'utf8')
 }
 
+const bufferFromString = str => {
+  const strUtf8 = unescape(encodeURIComponent(str))
+  const ab = new Uint8Array(strUtf8.length)
+  for (let i = 0; i < strUtf8.length; i++) {
+    ab[i] = strUtf8.charCodeAt(i)
+  }
+  return ab
+}
+
 module.exports = {
   startNode,
   getPrivateKey,
-  getTestConfigFile
+  getTestConfigFile,
+  bufferFromString
 }
