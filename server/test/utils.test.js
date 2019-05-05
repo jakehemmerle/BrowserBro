@@ -1,15 +1,15 @@
-const { getPrivateKey, getTestConfigFile } = require('../src/util');
+const { getPrivateKey, getTestConfigFile } = require('../src/util')
 
-describe('util', function() {
+describe('util', function () {
   describe('getTestConfigFile()', () => {
     it('should print a config file', () => {
-      console.log(getTestConfigFile());
-    });
-  });
+      console.log(getTestConfigFile())
+    })
+  })
 
   describe('getPrivateKey()', () => {
     it('should print a private key', () => {
-      console.log(getPrivateKey());
-    });
-  });
-});
+      console.log(getPrivateKey())
+    })
+  })
+})

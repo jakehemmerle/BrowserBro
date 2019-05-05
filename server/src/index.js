@@ -1,32 +1,36 @@
-const IPFS = require('ipfs');
-const express = require('express');
-const app = express();
-const port = 3000;
-const bodyParser = require("body-parser");
-const { startNode } = require('./util');
+const IPFS = require('ipfs')
+const ipns = require('ipns')
+const express = require('express')
+const bodyParser = require('body-parser')
+const { startNode, getPrivateKey } = require('./util')
 
-const IPFSNode = new IPFS();
-let nodeRunning = startNode(IPFSNode);
+// SETUP
+const app = express()
+const port = 3000
 
-app.use(bodyParser.json()); // to support JSON-encoded bodies
+const IPFSNode = new IPFS()
+let nodeRunning = startNode(IPFSNode)
 
-app.get('/ping', (req, res) => res.send('Hello World!'));
+app.use(bodyParser.json()) // to support JSON-encoded bodies
+
+// ENDPOINTS
+app.get('/ping', (req, res) => res.send('Hello World!'))
 
 app.post('/uploadFile', async (req, res) => {
   if (nodeRunning) {
     try {
-      let uploadData = req.body.upload;
+      let uploadData = req.body.upload
 
       const filesAdded = await IPFSNode.add({
         path: 'hello.txt',
         content: Buffer.from(uploadData)
-      });
+      })
 
-      console.log('Added file:', filesAdded[0].path, filesAdded[0].hash);
+      console.log('Added file:', filesAdded[0].path, filesAdded[0].hash)
 
-      const fileBuffer = await IPFSNode.cat(filesAdded[0].hash);
+      const fileBuffer = await IPFSNode.cat(filesAdded[0].hash)
 
-      console.log('Added file contents:', fileBuffer.toString());
+      console.log('Added file contents:', fileBuffer.toString())
 
       //   const upload = await node.add({
       //     path: 'hello.txt',
@@ -42,24 +46,31 @@ app.post('/uploadFile', async (req, res) => {
   } else {
     res.send({ error: 'bad' })
   }
-});
+})
 
-app.post('/uploadConfig', async (req, res) => {
+app.post('/uploadPrivateKey', async (req, res) => {
+  let config = ''
   try {
-    const { config } = req.body;
+    config = req.body.config
   } catch (e) {
-    console.warn('No config key in body.')
+    console.warn('No \'config\' key in res.body')
   }
 
-  const privateKey = getPrivateKey(config);
-  IPFSNode.key.import()
-});
+  const privateKey = getPrivateKey(config)
+  IPFSNode.key.import('key', privateKey, 'password', (err, key) => {
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+  })
+})
 
-function bufferFromString(str) {
-  const strUtf8 = unescape(encodeURIComponent(str));
-  const ab = new Uint8Array(strUtf8.length);
+app.post('/syncBrowsingData', (req, res) => {
+
+})
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+function bufferFromString (str) {
+  const strUtf8 = unescape(encodeURIComponent(str))
+  const ab = new Uint8Array(strUtf8.length)
   for (let i = 0; i < strUtf8.length; i++) {
     ab[i] = strUtf8.charCodeAt(i)
   }

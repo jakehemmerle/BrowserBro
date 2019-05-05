@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "test": "mocha"
+    "test": "mocha --recursive"
   },
   "repository": {
     "type": "git",
@@ -19,15 +19,18 @@
   "homepage": "https://github.com/jakehemmerle/BrowserBro#readme",
   "devDependencies": {
     "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.17.2",
-    "js-ipfs": "0.0.301",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
     "mocha": "^6.1.4",
     "prettier": "^1.17.0"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.16.4",
-    "ipfs": "^0.35.0"
+    "ipfs": "^0.35.0",
+    "ipns": "^0.5.1"
   }
 }
