@@ -1,65 +1,41 @@
 const IPFS = require('ipfs')
-const ipns = require('ipns')
 const express = require('express')
 const bodyParser = require('body-parser')
-const { startNode, getPrivateKey } = require('./util')
+const api = require('./api')
 
 // SETUP
 const app = express()
+app.use(bodyParser.json()) // to support JSON-encoded bodies
 const port = 3000
 
-const IPFSNode = new IPFS()
-let nodeRunning = startNode(IPFSNode)
+let IPFSNode
 
-app.use(bodyParser.json()) // to support JSON-encoded bodies
+const startNode = () => {
+  const options = {
+    config: {
+      Addresses: {
+        Swarm: ['/dns4/ws-star.discovery.libp2p.io/tcp/443/wss/p2p-websocket-star']
+      }
+    }
+  }
+  IPFSNode = new IPFS(options)
+
+  IPFSNode.on('ready', () => {
+    console.log('IPFS node ready.')
+  })
+}
+
+startNode()
 
 // ENDPOINTS
-app.get('/ping', (req, res) => res.send({ message: 'pong' }))
+app.get('/ping', api.ping)
 
-app.post('/uploadFile', async (req, res) => {
-  if (nodeRunning) {
-    try {
-      let uploadData = 'asdfdfdfsasd'
+app.post('/uploadData', async (req, res) => {
+  const browsingData = req.body
+  console.log('Received browsing data')
 
-      const filesAdded = await IPFSNode.add({
-        path: 'hello.txt',
-        content: Buffer.from(uploadData)
-      })
-
-      console.log('Added file:', filesAdded[0].path, filesAdded[0].hash)
-
-      const fileBuffer = await IPFSNode.cat(filesAdded[0].hash)
-
-      console.log('Added file contents:', fileBuffer.toString())
-
-      //   const upload = await node.add({
-      //     path: 'hello.txt',
-      //     content: Buffer.from(uploadData)
-      //   })
-      //   //   let uploadBuffer = bufferFromString(uploadData)
-      //   //   let upload = await node.addListener(uploadBuffer)
-      //   console.log(upload)
-      res.send({ location: filesAdded[0].hash })
-    } catch (e) {
-      console.log(e)
-    }
-  } else {
-    res.send({ error: 'bad' })
-  }
-})
-
-app.post('/uploadPrivateKey', async (req, res) => {
-  let config = ''
-  try {
-    config = req.body.config
-  } catch (e) {
-    console.warn('No \'config\' key in res.body')
-  }
-
-  const privateKey = getPrivateKey(config)
-  IPFSNode.key.import('key', privateKey, 'password', (err, key) => {
-
-  })
+  const filesAdded = api.uploadToIpfs(IPFSNode, browsingData)
+  res.send({ filesAdded })
 })
 
 app.post('/syncBrowsingData', (req, res) => {
@@ -68,4 +44,10 @@ app.post('/syncBrowsingData', (req, res) => {
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
+// add file to ipfs
 
+// add keys to node
+
+// send browsing data to frontend
+
+// save browsing data

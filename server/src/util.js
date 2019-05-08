@@ -1,11 +1,3 @@
-const startNode = (node) => {
-  node.on('ready', async () => {
-    console.log('IPFS Node Running')
-    return true
-  })
-  return false
-}
-
 const getPrivateKey = (configFile) => {
   // TODO: parse config file and return private key
   const config = JSON.parse(getTestConfigFile())
@@ -31,7 +23,6 @@ const bufferFromString = str => {
 }
 
 module.exports = {
-  startNode,
   getPrivateKey,
   getTestConfigFile,
   bufferFromString
