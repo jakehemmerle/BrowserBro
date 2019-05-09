@@ -1,0 +1,25 @@
+{
+  "name": "browserbro-extension",
+  "version": "1.0.0",
+  "description": "client side",
+  "main": ".",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakehemmerle/BrowserBro.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jakehemmerle/BrowserBro/issues"
+  },
+  "homepage": "https://github.com/jakehemmerle/BrowserBro#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  },
+  "dependencies": {
+    "webextension-polyfill": "^0.4.0"
+  }
+}
