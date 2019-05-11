@@ -4,6 +4,7 @@
   "description": "Store your browsing data on IPFS",
   "main": ".",
   "scripts": {
+    "build": "",
     "start": "node ../src/index.js",
     "test": "mocha --recursive"
   },
@@ -28,8 +29,9 @@
     "prettier": "^1.17.0"
   },
   "dependencies": {
-    "webextension-polyfill": "^0.4.0",
+    "browserify": "^16.2.3",
     "ipfs": "^0.35.0",
-    "ipns": "^0.5.1"
+    "ipns": "^0.5.1",
+    "webextension-polyfill": "^0.4.0"
   }
 }
