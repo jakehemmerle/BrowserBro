@@ -15,5 +15,5 @@ const uploadToIpfs = async (node, data) => {
 }
 
 module.exports = {
-  uploadToIpfs,
+  uploadToIpfs
 }

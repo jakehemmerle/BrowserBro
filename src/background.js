@@ -1,5 +1,5 @@
 const IPFS = require('ipfs')
-const api = require('./api')
+const IpfsHelper = require('./ipfsHelper')
 
 // SETUP
 
@@ -23,19 +23,10 @@ const startNode = () => {
 startNode()
 
 // ENDPOINTS
-app.post('/uploadData', async (req, res) => {
-  const browsingData = req.body
-  console.log('Received browsing data')
-
-  const filesAdded = api.uploadToIpfs(IPFSNode, browsingData)
+const uploadData = (browsingData) => {
+  const filesAdded = IpfsHelper.uploadToIpfs(IPFSNode, browsingData)
   res.send({ filesAdded })
-})
-
-app.post('/syncBrowsingData', (req, res) => {
-
-})
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+}
 
 // add file to ipfs
 
@@ -117,38 +108,16 @@ function loadCookies (allCookies) {
   console.log('Cookies loaded.')
 }
 
-function uploadTestFile () {
-  let url = 'http://localhost:3000/uploadData'
-  let data = {
-    name: 'jake',
-    age: '20'
-  }
-  fetch(url, {
-    body: JSON.stringify(data),
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    method: 'POST'
-  }).then(res => console.log(res))
-}
-
-async function uploadBrowsingData () {
-  let url = 'http://localhost:3000/uploadData'
-
-  let data = JSON.stringify({
+async function uploadBrowsingDataToIpfs () {
+  let browsingData = JSON.stringify({
     cookies: await getCookies(),
     bookmarks: await getBookmarks(),
     history: await getHistory()
   })
 
   console.log('Data to be sent: ')
-  console.log(JSON.parse(data))
+  console.log(JSON.parse(browsingData))
 
-  fetch(url, {
-    body: data,
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    method: 'POST'
-  }).then(res => console.log('response: ', res))
+  uploadData(browsingData)
+
 }
