@@ -14,9 +14,6 @@ const uploadToIpfs = async (node, data) => {
   return filesAdded
 }
 
-const ping = (req, res) => res.send({ message: 'pong' })
-
 module.exports = {
   uploadToIpfs,
-  ping
 }
