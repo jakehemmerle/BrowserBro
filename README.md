@@ -22,7 +22,7 @@ Run ```npx eslint --init``` and use the Standard style sheet.
 
 #### Build 
 
-Build the packages by running```npm run build-js```
+Build the packages by running```npm run build-js```. This turns 
 
 ## MVP Roadmap
 
