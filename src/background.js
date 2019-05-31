@@ -1,5 +1,5 @@
 const IPFSHelper = require('./ipfs')
-const Browser = require('./browser')
+const { BrowserHelper } = require('./browser')
 
 IPFSHelper.startNode()
-Browser.configureListeners()
+BrowserHelper.configureListeners()
