@@ -1,26 +1,37 @@
 {
-  "name": "BrowserBro",
+  "name": "browserbro",
   "version": "1.0.0",
-  "description": "[![browserbro](https://img.shields.io/badge/freenode-%23browserbro-brightgreen.svg)](https://webchat.freenode.net/?channels=browserbro)",
-  "main": "app.js",
+  "description": "Store your browsing data on IPFS",
+  "main": ".",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "",
+    "start": "node ../src/index.js",
+    "test": "mocha --recursive"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jakehemmerle/BrowserBro.git"
   },
-  "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jakehemmerle/BrowserBro/issues"
   },
   "homepage": "https://github.com/jakehemmerle/BrowserBro#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "mocha": "^6.1.4",
+    "prettier": "^1.17.0"
+  },
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.16.4",
+    "browserify": "^16.2.3",
     "ipfs": "^0.35.0",
-    "libp2p-crypto": "^0.16.1"
+    "ipns": "^0.5.1",
+    "webextension-polyfill": "^0.4.0"
   }
 }
