@@ -4,9 +4,10 @@
   "description": "Store your browsing data on IPFS",
   "main": ".",
   "scripts": {
-    "build": "",
+    "build": "./scripts/build.sh",
     "start": "node ../src/index.js",
-    "test": "mocha --recursive"
+    "test": "mocha --recursive",
+    "clean": "rm -rf ./build/*"
   },
   "repository": {
     "type": "git",

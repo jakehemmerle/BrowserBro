@@ -4,7 +4,7 @@ const listener = require('../browser/listeners')
 
 async function uploadBrowsingDataToIPFS () {
   let browsingData = JSON.stringify({
-    // TODO: call these in parallel
+    // TODO: optimization: call these in parallel
     cookies: await BrowserHelper.getCookies(),
     bookmarks: await BrowserHelper.getBookmarks(),
     history: await BrowserHelper.getHistory()
@@ -19,6 +19,7 @@ async function uploadBrowsingDataToIPFS () {
 
 function configureListeners () {
   listener.configurePrivateKeyListener()
+  listener.configureSetIPNSValueListener()
 }
 
 module.exports = {
