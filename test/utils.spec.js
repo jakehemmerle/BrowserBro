@@ -1,4 +1,4 @@
-const { getPrivateKey, getTestConfigFile } = require('../src/util')
+const { getPrivateKey, getTestConfigFile } = require('../src/utils/util')
 
 describe('util', function () {
   describe('getTestConfigFile()', () => {
