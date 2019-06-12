@@ -10,21 +10,20 @@ Currenly in development.
 
 ### Setup
 
-
-
-Install the packages with ```npm install```
+We are currently building with Node v11.15.0. Install the packages with ```npm install```
 
 ### Configure
 
 #### ESLint
 
-Run ```npx eslint --init``` and use the Standard style sheet. 
+We use the Standard Style Sheet, and linting is required. Easiest way to get started is to run ```npx eslint --init```
+and select the Standard Style Sheet. 
 
-#### Build 
+### Building
 
 Build the packages by running```npm run build```. This cleans the /build directory, *browserifies* ```background.js```
-and ```popup.js```, and copies everything needed to run the extension into /build. Then load the extension in to the
-browser, selecting "Load Unpacked".
+and ```popup.js```, and copies everything needed to run the extension into the /build folder. Then, go to chrome://extensions,
+clicking "Load Unpacked" (make sure 'developer mode' is on, top right), and selecting the /build folder. 
 
 ## How To Help
 
