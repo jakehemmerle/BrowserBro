@@ -60,6 +60,8 @@ function loadCookies (allCookies) {
   console.log('Cookies loaded.')
 }
 
+// TODO: write functions that get and set data to values "localMirrorCache" and "IPFSMirrorCache"
+
 module.exports = {
   getHistory,
   loadHistory,
