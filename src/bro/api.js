@@ -18,6 +18,12 @@ async function uploadBrowsingDataToIPFS () {
 }
 
 function configureMessageListeners () {
+  listener.configureBrowsingDataToLocalMirrorListener()
+  listener.configureInjectTestDataListener()
+  listener.configureLocalMirrorToIPFSListener()
+  listener.configureFetchRemoteMirrorListener()
+  listener.configureMergeMirrorsListener()
+  listener.configureLoadMetadataIntoBrowserListener()
   listener.configurePrivateKeyListener()
   listener.configureSetIPNSValueListener()
   listener.configureTestListener()

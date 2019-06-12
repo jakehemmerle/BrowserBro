@@ -19,34 +19,45 @@ let mergeMirrorsButton = document.getElementById('mergeMirrors')
 let loadMetadataIntoBrowserButton = document.getElementById('loadMetadataIntoBrowser')
 
 const browsingDataToLocalMirror = () => {
-  console.log('Sending message to background.js...')
   browser.runtime.sendMessage({
-    action: 'testListener'
-  }).then(res => console.log(res))
+    action: 'browsingDataToLocalMirror'
+  }).then(res => console.debug(res))
 }
 
 const injectTestData = () => {
-
+  browser.runtime.sendMessage({
+    action: 'injectTestData'
+  }).then(res => console.debug(res))
 }
 
 const localMirrorToIPFS = () => {
-
+  browser.runtime.sendMessage({
+    action: 'localMirrorToIPFS'
+  }).then(res => console.debug(res))
 }
 
 const setNewIPNSLink = () => {
-
+  browser.runtime.sendMessage({
+    action: 'setNewIPNSLink'
+  }).then(res => console.debug(res))
 }
 
 const fetchRemoteMirror = () => {
-
+  browser.runtime.sendMessage({
+    action: 'fetchRemoteMirror'
+  }).then(res => console.debug(res))
 }
 
 const mergeMirrors = () => {
-
+  browser.runtime.sendMessage({
+    action: 'mergeMirrors'
+  }).then(res => console.debug(res))
 }
 
 const loadMetadataIntoBrowser = () => {
-
+  browser.runtime.sendMessage({
+    action: 'loadMetadataIntoBrowser'
+  }).then(res => console.debug(res))
 }
 
 browsingDataToLocalMirrorButton.onclick = browsingDataToLocalMirror
