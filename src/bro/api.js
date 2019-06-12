@@ -17,12 +17,13 @@ async function uploadBrowsingDataToIPFS () {
     .then(res => console.log(res))
 }
 
-function configureListeners () {
+function configureMessageListeners () {
   listener.configurePrivateKeyListener()
   listener.configureSetIPNSValueListener()
+  listener.configureTestListener()
 }
 
 module.exports = {
   uploadBrowsingDataToIPFS,
-  configureListeners
+  configureMessageListeners
 }

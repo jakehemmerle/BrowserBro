@@ -1,14 +1,14 @@
 const browser = require('webextension-polyfill')
 
-const port = browser.runtime.connect({ name: 'browserbro' })
-
-port.onMessage.addListener((msg) => {
-  if (msg.action === "Who's there?") {
-
-  } else if (msg.action === 'Madame who?') {
-
-  }
-})
+// const port = browser.runtime.connect({ name: 'browserbro' })
+//
+// port.onMessage.addListener((msg) => {
+//   if (msg.action === "Who's there?") {
+//
+//   } else if (msg.action === 'Madame who?') {
+//
+//   }
+// })
 
 let browsingDataToLocalMirrorButton = document.getElementById('browsingDataToLocalMirror')
 let injectTestDataButton = document.getElementById('injectTestData')
@@ -20,7 +20,9 @@ let loadMetadataIntoBrowserButton = document.getElementById('loadMetadataIntoBro
 
 const browsingDataToLocalMirror = () => {
   console.log('Sending message to background.js...')
-  port.postMessage({ action: 'browsingDataToLocalMirror' })
+  browser.runtime.sendMessage({
+    action: 'testListener'
+  }).then(res => console.log(res))
 }
 
 const injectTestData = () => {
