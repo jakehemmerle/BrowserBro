@@ -22,25 +22,10 @@ Run ```npx eslint --init``` and use the Standard style sheet.
 
 #### Build 
 
-Build the packages by running```npm run build-js```. This turns 
+Build the packages by running```npm run build```. This cleans the /build directory, *browserifies* ```background.js```
+and ```popup.js```, and copies everything needed to run the extension into /build. Then load the extension in to the
+browser, selecting "Load Unpacked".
 
-## MVP Roadmap
+## How To Help
 
-#### Assumptions
-User has access to private key file somehow
-
-Assume files at ipns link are encrypted with same key pair as above
-
-#### Authentication
-*IPNS* - how is the extension going to remember the url? public key is address of ipns
-
-#### Extension Features
-
-- On initial launch, popup that prompts user to select where their private key file is located and saves into web auth api
-- Download files from ipns link and decrypt
-- Grab passwords
-- DONE: Upload file to IPFS
-- DONE: Load data back into browser
-- DONE: Grab browsing history
-- DONE: Grab bookmarks
-- DONE: Grab cookies
+All help is appreciated! Feel free to grab one of the issues or reach out to @jakehemmerle on Twitter.    
