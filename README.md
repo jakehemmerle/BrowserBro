@@ -23,7 +23,7 @@ and select the Standard Style Sheet.
 
 Build the packages by running```npm run build```. This cleans the /build directory, *browserifies* ```background.js```
 and ```popup.js```, and copies everything needed to run the extension into the /build folder. Then, go to chrome://extensions,
-clicking "Load Unpacked" (make sure 'developer mode' is on, top right), and selecting the /build folder. 
+click "Load Unpacked" (make sure 'developer mode' is on, top right), and select the /build folder. 
 
 ## How To Help
 
