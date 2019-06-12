@@ -2,7 +2,7 @@
 
 [![browserbro](https://img.shields.io/badge/freenode-%23browserbro-brightgreen.svg)](https://webchat.freenode.net/?channels=browserbro)
 
-BrowserBro is a browser plugin that lets you encrypt and store your personal web data (passwords, history, cookies) on a distributed P2P file system called IPFS.
+BrowserBro is a browser plugin that lets you encrypt and store your personal web data (passwords, history, cookies, bookmarks, etc) on a distributed P2P file system called IPFS.
 
 MVP should be out in a few weeks.
 
