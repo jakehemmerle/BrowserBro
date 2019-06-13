@@ -60,6 +60,19 @@ function loadCookies (allCookies) {
   console.log('Cookies loaded.')
 }
 
+function saveDataToLocalMirror (data) {
+  browser.storage.local.set({ localMirror: data }, function () {
+    console.debug('Local mirror has been updated')
+  })
+}
+
+function getBrowsingDataFromLocalMirror () {
+  browser.storage.local.get(['localMirror'], (data) => {
+    // TODO: promisfy this
+    console.log('Local Mirror: ' + data)
+  })
+}
+
 // TODO: write functions that get and set data to values "localMirrorCache" and "IPFSMirrorCache"
 
 module.exports = {
@@ -69,4 +82,6 @@ module.exports = {
   loadBookmarks,
   getCookies,
   loadCookies,
+  saveDataToLocalMirror,
+  getBrowsingDataFromLocalMirror
 }
