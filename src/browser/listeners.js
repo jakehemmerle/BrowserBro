@@ -3,7 +3,7 @@ const browser = require('webextension-polyfill')
 const configureBrowsingDataToLocalMirrorListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'browsingDataToLocalMirror') {
-
+      // TODO: action logic
     }
 
     return Promise.resolve({ complete: true })
@@ -13,7 +13,7 @@ const configureBrowsingDataToLocalMirrorListener = () => {
 const configureInjectTestDataListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'injectTestData') {
-
+      // TODO: action logic
     }
 
     return Promise.resolve({ complete: true })
@@ -23,7 +23,7 @@ const configureInjectTestDataListener = () => {
 const configureLocalMirrorToIPFSListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'localMirrorToIPFS') {
-
+      // TODO: action logic
     }
 
     return Promise.resolve({ complete: true })
@@ -33,7 +33,7 @@ const configureLocalMirrorToIPFSListener = () => {
 const configureSetNewIPNSLinkListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'setNewIPNSLink') {
-
+      // TODO: action logic
     }
 
     return Promise.resolve({ complete: true })
@@ -43,7 +43,7 @@ const configureSetNewIPNSLinkListener = () => {
 const configureFetchRemoteMirrorListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'fetchRemoteMirror') {
-
+      // TODO: action logic
     }
 
     return Promise.resolve({ complete: true })
@@ -53,7 +53,7 @@ const configureFetchRemoteMirrorListener = () => {
 const configureMergeMirrorsListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'mergeMirrors') {
-
+      // TODO: action logic
     }
 
     return Promise.resolve({ complete: true })
@@ -63,7 +63,7 @@ const configureMergeMirrorsListener = () => {
 const configureLoadMetadataIntoBrowserListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'loadMetadataIntoBrowser') {
-
+      // TODO: action logic
     }
 
     return Promise.resolve({ complete: true })

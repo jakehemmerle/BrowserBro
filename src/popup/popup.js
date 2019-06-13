@@ -1,15 +1,5 @@
 const browser = require('webextension-polyfill')
 
-// const port = browser.runtime.connect({ name: 'browserbro' })
-//
-// port.onMessage.addListener((msg) => {
-//   if (msg.action === "Who's there?") {
-//
-//   } else if (msg.action === 'Madame who?') {
-//
-//   }
-// })
-
 let browsingDataToLocalMirrorButton = document.getElementById('browsingDataToLocalMirror')
 let injectTestDataButton = document.getElementById('injectTestData')
 let localMirrorToIPFSButton = document.getElementById('localMirrorToIPFS')
