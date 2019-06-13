@@ -10,6 +10,9 @@ const configureBrowsingDataToLocalMirrorListener = () => {
         bookmarks: await BrowserAPI.getBookmarks(),
         cookies: await BrowserAPI.getCookies()
       }
+
+      console.debug('Browsing data in browser: ')
+      console.debug(browsingData)
       BrowserAPI.saveDataToLocalMirror(browsingData)
     }
 
@@ -80,7 +83,8 @@ const configureLoadMetadataIntoBrowserListener = () => {
 const configureLogLocalMirrorListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'logLocalMirror') {
-      BrowserAPI.getBrowsingDataFromLocalMirror()
+      BrowserAPI.logLocalMirror()
+        .then((data) => console.log(data))
     }
 
     return Promise.resolve({ complete: true })
