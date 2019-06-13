@@ -24,6 +24,7 @@ function configureMessageListeners () {
   listener.configureFetchRemoteMirrorListener()
   listener.configureMergeMirrorsListener()
   listener.configureLoadMetadataIntoBrowserListener()
+  listener.configureLogLocalMirrorListener()
   listener.configurePrivateKeyListener()
   listener.configureSetIPNSValueListener()
   listener.configureTestListener()

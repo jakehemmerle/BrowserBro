@@ -1,9 +1,16 @@
 const browser = require('webextension-polyfill')
+const BrowserAPI = require('./api')
 
 const configureBrowsingDataToLocalMirrorListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'browsingDataToLocalMirror') {
-      // TODO: action logic
+      // TODO: make these calls parallel
+      const browsingData = {
+        history: await BrowserAPI.getHistory(),
+        bookmarks: await BrowserAPI.getBookmarks(),
+        cookies: await BrowserAPI.getCookies()
+      }
+      BrowserAPI.saveDataToLocalMirror(browsingData)
     }
 
     return Promise.resolve({ complete: true })
@@ -70,6 +77,16 @@ const configureLoadMetadataIntoBrowserListener = () => {
   })
 }
 
+const configureLogLocalMirrorListener = () => {
+  browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
+    if (request.action === 'logLocalMirror') {
+      BrowserAPI.getBrowsingDataFromLocalMirror()
+    }
+
+    return Promise.resolve({ complete: true })
+  })
+}
+
 const configurePrivateKeyListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'savePrivateKey') {
@@ -119,6 +136,7 @@ module.exports = {
   configureFetchRemoteMirrorListener,
   configureMergeMirrorsListener,
   configureLoadMetadataIntoBrowserListener,
+  configureLogLocalMirrorListener,
   configurePrivateKeyListener,
   configureSetIPNSValueListener,
   configureTestListener
