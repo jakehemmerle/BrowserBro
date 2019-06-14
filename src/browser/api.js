@@ -61,12 +61,12 @@ function loadCookies (allCookies) {
 }
 
 function saveDataToLocalMirror (data) {
-  browser.storage.local.set({ localMirror: data }, function () {
-    console.debug('Local mirror has been updated')
-  })
+  console.debug('Inside saveDataToLocalMirror')
+  browser.storage.local.set({ localMirror: data })
+    .then(res => console.debug(res))
 }
 
-function logLocalMirror () {
+function getLocalMirror () {
   return browser.storage.local.get(['localMirror'])
 }
 
@@ -80,5 +80,5 @@ module.exports = {
   getCookies,
   loadCookies,
   saveDataToLocalMirror,
-  logLocalMirror
+  getLocalMirror
 }

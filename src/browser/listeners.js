@@ -82,9 +82,9 @@ const configureLoadMetadataIntoBrowserListener = () => {
 
 const configureLogLocalMirrorListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
-    if (request.action === 'logLocalMirror') {
-      BrowserAPI.logLocalMirror()
-        .then((data) => console.log(data))
+    if (request.action === 'getLocalMirror') {
+      BrowserAPI.getLocalMirror()
+        .then((data) => console.log(data.localMirror))
     }
 
     return Promise.resolve({ complete: true })
