@@ -1,9 +1,11 @@
 const browser = require('webextension-polyfill')
 const BrowserAPI = require('./api')
+const IPFSHelper = require('../ipfs')
 
 const configureBrowsingDataToLocalMirrorListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'browsingDataToLocalMirror') {
+      console.debug(`Action: ${request.action}`)
       // TODO: make these calls parallel
       const browsingData = {
         history: await BrowserAPI.getHistory(),
@@ -23,6 +25,7 @@ const configureBrowsingDataToLocalMirrorListener = () => {
 const configureInjectTestDataListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'injectTestData') {
+      console.debug(`Action: ${request.action}`)
       // TODO: action logic
     }
 
@@ -33,7 +36,10 @@ const configureInjectTestDataListener = () => {
 const configureLocalMirrorToIPFSListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'localMirrorToIPFS') {
+      console.debug(`Action: ${request.action}`)
       // TODO: action logic
+      IPFSHelper.uploadToIPFS(request.data)
+        .then(res => console.debug(`Upload completed`))
     }
 
     return Promise.resolve({ complete: true })
@@ -43,6 +49,7 @@ const configureLocalMirrorToIPFSListener = () => {
 const configureSetNewIPNSLinkListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'setNewIPNSLink') {
+      console.debug(`Action: ${request.action}`)
       // TODO: action logic
     }
 
@@ -53,6 +60,7 @@ const configureSetNewIPNSLinkListener = () => {
 const configureFetchRemoteMirrorListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'fetchRemoteMirror') {
+      console.debug(`Action: ${request.action}`)
       // TODO: action logic
     }
 
@@ -63,6 +71,7 @@ const configureFetchRemoteMirrorListener = () => {
 const configureMergeMirrorsListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'mergeMirrors') {
+      console.debug(`Action: ${request.action}`)
       // TODO: action logic
     }
 
@@ -73,6 +82,7 @@ const configureMergeMirrorsListener = () => {
 const configureLoadMetadataIntoBrowserListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'loadMetadataIntoBrowser') {
+      console.debug(`Action: ${request.action}`)
       // TODO: action logic
     }
 
@@ -83,6 +93,7 @@ const configureLoadMetadataIntoBrowserListener = () => {
 const configureLogLocalMirrorListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'logLocalMirror') {
+      console.debug(`Action: ${request.action}`)
       BrowserAPI.getLocalMirror()
         .then((data) => console.log(data.localMirror))
     }
@@ -94,7 +105,7 @@ const configureLogLocalMirrorListener = () => {
 const configurePrivateKeyListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'savePrivateKey') {
-      console.log(request)
+      console.debug(`Action: ${request.action}`)
       await browser.storage.local.set({ privateKey: request.data })
 
       browser.storage.local.get(['privateKey'], function (result) {
@@ -109,7 +120,7 @@ const configurePrivateKeyListener = () => {
 const configureSetIPNSValueListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'setNewIPNSValue') {
-      console.log(request)
+      console.debug(`Action: ${request.action}`)
       await browser.storage.local.set({ IPNSValue: request.data })
       // TODO: write code that sets the latest IPFS value to the IPNS DHT
 
@@ -125,6 +136,7 @@ const configureSetIPNSValueListener = () => {
 const configureTestListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'testListener') {
+      console.debug(`Action: ${request.action}`)
       console.log(`Test message received: ${request}`)
     }
 
