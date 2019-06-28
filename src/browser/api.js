@@ -61,7 +61,6 @@ function loadCookies (allCookies) {
 }
 
 function saveDataToLocalMirror (data) {
-  console.debug('Inside saveDataToLocalMirror')
   browser.storage.local.set({ localMirror: data })
     .then(res => console.debug(res))
 }

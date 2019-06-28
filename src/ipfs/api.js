@@ -14,7 +14,7 @@ const startNode = () => {
   IPFSNode = new IPFS(options)
 
   IPFSNode.on('ready', () => {
-    console.log('IPFS node ready.')
+    console.debug('IPFS node ready.')
   })
 }
 
@@ -26,8 +26,8 @@ const uploadToIPFS = async (data) => {
 
   // TODO: copy browsing data to local storage
 
-  console.log('Added file:', filesAdded[0].path, filesAdded[0].hash)
-  console.log(filesAdded)
+  console.debug('Added file:', filesAdded[0].path, filesAdded[0].hash)
+  console.debug(filesAdded)
   return filesAdded
 }
 
