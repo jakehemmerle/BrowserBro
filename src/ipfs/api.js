@@ -19,12 +19,11 @@ const startNode = () => {
 }
 
 const uploadToIPFS = async (data) => {
+  console.log(`data: ${data}`)
   const filesAdded = await IPFSNode.add({
     path: `data-${new Date().getTime()}.json`,
     content: Buffer.from(JSON.stringify(data))
   })
-
-  // TODO: copy browsing data to local storage
 
   console.debug('Added file:', filesAdded[0].path, filesAdded[0].hash)
   console.debug(filesAdded)

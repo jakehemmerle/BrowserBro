@@ -37,9 +37,11 @@ const configureLocalMirrorToIPFSListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'localMirrorToIPFS') {
       console.debug(`Action: ${request.action}`)
-      // TODO: action logic
-      IPFSHelper.uploadToIPFS(request.data)
-        .then(res => console.debug(`Upload completed`))
+      BrowserAPI.getLocalMirror()
+        .then( data =>
+          IPFSHelper.uploadToIPFS(data)
+            .then(res => console.debug(`Upload completed`))
+        )
     }
 
     return Promise.resolve({ complete: true })
