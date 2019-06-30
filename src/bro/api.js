@@ -1,3 +1,5 @@
+// This api connects everything together, hence, it's being your bro.
+
 const IPFSHelper = require('../ipfs')
 const BrowserHelper = require('../browser')
 const listener = require('../browser/listeners')
