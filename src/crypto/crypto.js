@@ -31,5 +31,13 @@ const decryptData = () => {
 }
 
 module.exports = {
-
+  generateRSAKeyPair,
+  generateSessionKey,
+  addMasterKey,
+  deleteMasterKey,
+  signDeviceKey,
+  verifyDeviceKey,
+  encryptData,
+  decryptData
 }
+
