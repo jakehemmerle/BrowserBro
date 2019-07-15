@@ -6,8 +6,6 @@ const decryptData = () => {
   // TODO: logic for decryptData
 }
 
-
-
 module.exports = {
   encryptData,
   decryptData
