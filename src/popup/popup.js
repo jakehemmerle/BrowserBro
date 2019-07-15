@@ -7,6 +7,7 @@ let setNewIPNSLinkButton = document.getElementById('setNewIPNSLink')
 let fetchRemoteMirrorButton = document.getElementById('fetchRemoteMirror')
 let mergeMirrorsButton = document.getElementById('mergeMirrors')
 let loadMetadataIntoBrowserButton = document.getElementById('loadMetadataIntoBrowser')
+let logIPFSStatusButton = document.getElementById('logIPFSStatus')
 let logLocalMirrorButton = document.getElementById('logLocalMirror')
 
 const browsingDataToLocalMirror = () => {
@@ -51,6 +52,12 @@ const loadMetadataIntoBrowser = () => {
   }).then(res => console.debug(res))
 }
 
+const logIPFSStatus = () => {
+  browser.runtime.sendMessage({
+    action: 'logIPFSStatus'
+  }).then(res => console.debug(res))
+}
+
 const logLocalMirror = () => {
   browser.runtime.sendMessage({
     action: 'logLocalMirror'
@@ -64,4 +71,5 @@ setNewIPNSLinkButton.onclick = setNewIPNSLink
 fetchRemoteMirrorButton.onclick = fetchRemoteMirror
 mergeMirrorsButton.onclick = mergeMirrors
 loadMetadataIntoBrowserButton.onclick = loadMetadataIntoBrowser
+logIPFSStatusButton.onclick = logIPFSStatus
 logLocalMirrorButton.onclick = logLocalMirror

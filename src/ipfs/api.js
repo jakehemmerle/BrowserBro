@@ -30,7 +30,15 @@ const uploadToIPFS = async (data) => {
   return filesAdded
 }
 
+const logIPFSStatus = async () => {
+  IPFSNode.repo.stat({ human: true }, (err, stats) => {
+    if (err) console.error(err)
+    console.log(`IPFS Repo Stats: ${stats}`)
+  })
+}
+
 module.exports = {
   startNode,
-  uploadToIPFS
+  uploadToIPFS,
+  logIPFSStatus
 }

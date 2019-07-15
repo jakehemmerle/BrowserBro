@@ -104,6 +104,17 @@ const configureLogLocalMirrorListener = () => {
   })
 }
 
+const configureLogIPFSStatusListener = () => {
+  browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
+    if (request.action === 'logIPFSStatus') {
+      console.debug(`Action: ${request.action}`)
+      IPFSHelper.logIPFSStatus()
+    }
+
+    return Promise.resolve({ complete: true })
+  })
+}
+
 const configurePrivateKeyListener = () => {
   browser.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
     if (request.action === 'savePrivateKey') {

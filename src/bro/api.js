@@ -29,6 +29,7 @@ function configureMessageListeners () {
   listener.configureLogLocalMirrorListener()
   listener.configurePrivateKeyListener()
   listener.configureSetIPNSValueListener()
+  listener.configureLogIPFSStatusListener()
   listener.configureTestListener()
 }
 
