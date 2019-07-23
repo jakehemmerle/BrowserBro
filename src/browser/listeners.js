@@ -166,6 +166,7 @@ module.exports = {
   configureMergeMirrorsListener,
   configureLoadMetadataIntoBrowserListener,
   configureLogLocalMirrorListener,
+  configureLogIPFSStatusListener,
   configurePrivateKeyListener,
   configureSetIPNSValueListener,
   configureTestListener

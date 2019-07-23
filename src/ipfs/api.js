@@ -33,7 +33,8 @@ const uploadToIPFS = async (data) => {
 const logIPFSStatus = async () => {
   IPFSNode.repo.stat({ human: true }, (err, stats) => {
     if (err) console.error(err)
-    console.log(`IPFS Repo Stats: ${stats}`)
+    console.log('IPFS Repo Stats:')
+    console.log(stats)
   })
 }
 
