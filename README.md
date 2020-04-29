@@ -4,7 +4,7 @@
 
 **BrowserBro** is a browser plugin that lets you encrypt, store, and sync your personal web data (passwords, history, cookies, bookmarks, etc) through a distributed P2P file system called [IPFS](https://github.com/ipfs/ipfs).
 
-MVP should be out in a few weeks.
+Currently on hold.
 
 ## How to Use
 
